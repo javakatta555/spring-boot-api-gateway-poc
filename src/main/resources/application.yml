@@ -5,7 +5,16 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: ratingModule
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/rating/**
+          filters:
+            - PreFilter
+            - PreFilter2
+            - PostFilter
         - id: productModule
           uri: http://localhost:8080/
           predicates:
             - Path=/product/**
+
